@@ -48,5 +48,24 @@ namespace CabInvoiceGeneratorTest
             Assert.That(expected_Summary, Is.EqualTo(summary));
         }
 
+        [Test]
+        public void GivenUserID_WhenPassed_ShouldReturnInvoice()
+        {
+            invoiceGenerator = new CabInvoiceGenerator.InvoiceGenerator(RideType.NORMAL);
+            RideRepository rideRepository = new RideRepository();
+            rideRepository.AddRide("101", new Ride[] { new Ride(2.0, 5), new Ride(0.1, 1) });
+            rideRepository.AddRide("102", new Ride[] { new Ride(2.0, 7), new Ride(0.1, 6) });
+            rideRepository.AddRide("103", new Ride[] { new Ride(2.0, 2), new Ride(0.1, 4) });
+
+            Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+
+            string given_UserID = "102";
+            
+            InvoiceSummary summary = invoiceGenerator.CalculateFare(rideRepository.GetRides(given_UserID));
+
+            InvoiceSummary expected_Summary = new InvoiceSummary { total_Fare = 34, total_Rides = 2, avg_Fare = 17 };
+            Assert.That(expected_Summary, Is.EqualTo(summary));
+        }
+
     }
 }
