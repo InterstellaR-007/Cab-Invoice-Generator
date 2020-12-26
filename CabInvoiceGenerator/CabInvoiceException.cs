@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CabInvoiceGenerator
 {
@@ -16,6 +14,11 @@ namespace CabInvoiceGenerator
         }
 
         ExceptionType type;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CabInvoiceException"/> class.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="message">The message.</param>
         public CabInvoiceException(ExceptionType type,string message) : base(message)
         {
             this.type = type;

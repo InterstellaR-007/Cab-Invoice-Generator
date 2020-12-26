@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CabInvoiceGenerator
 {
-    
+
+    /// <summary>
+    /// Ride Repository Class
+    /// </summary>
     public class RideRepository
     {
         Dictionary<string, List<Ride>> userRides = null;
@@ -14,6 +16,12 @@ namespace CabInvoiceGenerator
             this.userRides = new Dictionary<string, List<Ride>>();
         }
 
+        /// <summary>
+        /// Adds the ride.
+        /// </summary>
+        /// <param name="userID">The user identifier.</param>
+        /// <param name="rides">The rides.</param>
+        /// <exception cref="CabInvoiceException">Rides are null</exception>
         public void AddRide(string userID, Ride[] rides)
         {
             bool rideList = this.userRides.ContainsKey(userID);
@@ -35,6 +43,12 @@ namespace CabInvoiceGenerator
 
         }
 
+        /// <summary>
+        /// Gets the rides.
+        /// </summary>
+        /// <param name="userID">The user identifier.</param>
+        /// <returns></returns>
+        /// <exception cref="CabInvoiceException">Invalid user id</exception>
         public Ride[] GetRides(string userID)
             {
             try

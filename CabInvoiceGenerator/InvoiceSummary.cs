@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CabInvoiceGenerator
+﻿namespace CabInvoiceGenerator
 {
+    /// <summary>
+    /// Invoice Summary Class
+    /// </summary>
     public class InvoiceSummary
     {
         public int total_Rides;
@@ -30,6 +29,10 @@ namespace CabInvoiceGenerator
             return this.total_Rides == input_Object.total_Rides && this.avg_Fare == input_Object.avg_Fare && this.total_Fare == input_Object.total_Fare;
 
             
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
     }

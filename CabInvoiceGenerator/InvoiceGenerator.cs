@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CabInvoiceGenerator
 {
@@ -13,6 +11,11 @@ namespace CabInvoiceGenerator
         private readonly int COST_PER_TIME;
         private readonly double MINIMUM_FARE;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InvoiceGenerator"/> class.
+        /// </summary>
+        /// <param name="rideType">Type of the ride.</param>
+        /// <exception cref="CabInvoiceException">Invalid Ride type</exception>
         public InvoiceGenerator(RideType rideType)
         {
             this.rideType = rideType;
@@ -40,6 +43,19 @@ namespace CabInvoiceGenerator
 
         }
 
+        /// <summary>
+        /// Calculates the fare.
+        /// </summary>
+        /// <param name="distance">The distance.</param>
+        /// <param name="time">The time.</param>
+        /// <returns></returns>
+        /// <exception cref="CabInvoiceException">
+        /// Null rides
+        /// or
+        /// Invalid distance
+        /// or
+        /// Invalid Times
+        /// </exception>
         public double CalculateFare(double distance, int time)
         {
             double total_fare = 0;
@@ -59,6 +75,12 @@ namespace CabInvoiceGenerator
             return Math.Max(total_fare, MINIMUM_FARE);
         }
 
+        /// <summary>
+        /// Calculates the fare.
+        /// </summary>
+        /// <param name="rides">The rides.</param>
+        /// <returns></returns>
+        /// <exception cref="CabInvoiceException">Rides are null</exception>
         public InvoiceSummary CalculateFare(Ride[] rides)
         {
             double total_Fare = 0;

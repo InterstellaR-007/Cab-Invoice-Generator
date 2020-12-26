@@ -3,9 +3,10 @@ using NUnit.Framework;
 
 namespace CabInvoiceGeneratorTest
 {
+    
     public class Tests
     {
-        CabInvoiceGenerator.InvoiceGenerator invoiceGenerator = null;
+        InvoiceGenerator invoiceGenerator = null;
         /// <summary>
         /// Setups this instance.
         /// </summary>
@@ -36,7 +37,7 @@ namespace CabInvoiceGeneratorTest
         [Test]
         public void GivenMultipleRides_WhenPassed_ShouldReturnAggregateTotal()
         {
-            invoiceGenerator = new CabInvoiceGenerator.InvoiceGenerator(RideType.NORMAL);
+            invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
             Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
 
             InvoiceSummary summary = invoiceGenerator.CalculateFare(rides);
@@ -66,7 +67,7 @@ namespace CabInvoiceGeneratorTest
         [Test]
         public void GivenUserID_WhenPassed_ShouldReturnInvoice()
         {
-            invoiceGenerator = new CabInvoiceGenerator.InvoiceGenerator(RideType.NORMAL);
+            invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
             RideRepository rideRepository = new RideRepository();
             rideRepository.AddRide("101", new Ride[] { new Ride(2.0, 5), new Ride(0.1, 1) });
             rideRepository.AddRide("102", new Ride[] { new Ride(2.0, 7), new Ride(0.1, 6) });
@@ -85,8 +86,8 @@ namespace CabInvoiceGeneratorTest
         public void GivenRideTypePREMIUMandNormal_WhenPassed_ShouldReturnInvoice()
         {
 
-            CabInvoiceGenerator.InvoiceGenerator invoiceGenerator_Normal = new CabInvoiceGenerator.InvoiceGenerator(RideType.NORMAL);
-            CabInvoiceGenerator.InvoiceGenerator invoiceGenerator_Premium = new CabInvoiceGenerator.InvoiceGenerator(RideType.PREMIUM);
+            InvoiceGenerator invoiceGenerator_Normal = new InvoiceGenerator(RideType.NORMAL);
+            InvoiceGenerator invoiceGenerator_Premium = new InvoiceGenerator(RideType.PREMIUM);
 
             double distance_Normal = 2.0;
             int time_Normal = 5;

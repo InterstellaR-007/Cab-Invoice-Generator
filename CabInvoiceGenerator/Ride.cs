@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CabInvoiceGenerator
+﻿namespace CabInvoiceGenerator
 {
     public class Ride
     {
@@ -10,6 +6,11 @@ namespace CabInvoiceGenerator
         public int time;
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ride"/> class.
+        /// </summary>
+        /// <param name="distance">The distance.</param>
+        /// <param name="time">The time.</param>
         public Ride(double distance, int time)
         {
             this.distance = distance;
